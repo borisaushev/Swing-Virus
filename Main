@@ -1,0 +1,79 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+
+public class Main {
+
+    public static void main(String[] args)  {
+        new Panel();
+    }
+
+}
+
+class Panel implements ActionListener {
+    static int count = 1;
+    Random rand = new Random();
+
+    Panel() {
+
+        JFrame frame = new JFrame();
+        frame.setSize(300, 200);
+        frame.setLocation(rand.nextInt(1620), rand.nextInt(880));
+        frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        JButton button = new JButton("CLOSE");
+        button.addActionListener(this);
+        frame.add(button);
+        frame.setVisible(true);
+
+    }
+
+    public void actionPerformed(ActionEvent event) {
+        count *= 16;
+        for(int i = 0; i < count; i++)
+            new Panel();
+
+    }
+}
+
+
+
+
+
+class User {
+
+    private String name;
+    private int age;
+    private String mail;
+
+    User(String name, int age, String mail) {
+
+        assert (name.length() >= 3 && age > 0) : "Incorrect name or age";
+
+        this.name = name;
+        this.age = age;
+        this.mail = mail;
+
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", mail='" + mail + '\'' +
+                '}';
+    }
+}
